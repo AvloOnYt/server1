@@ -1,0 +1,174 @@
+{
+  "clients": {
+    "94a99fbd-5ca6-4db3-adef-2249d829f650": {
+      "hostname": "BAILEY",
+      "ip": "192.168.1.91",
+      "os": "Microsoft Windows NT 10.0.26100.0",
+      "last_seen": "2025-12-04T03:44:12.199015Z",
+      "online": false,
+      "queued_commands": []
+    }
+  },
+  "command_history": [
+    {
+      "id": "c592858b-207c-47ed-b8de-02981db2c4df",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "command": "whoami",
+      "timestamp": "2025-12-04T02:16:51.411481Z",
+      "status": "pending",
+      "output": ""
+    },
+    {
+      "id": "c592858b-207c-47ed-b8de-02981db2c4df",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "timestamp": "2025-12-04T02:16:51.443590Z",
+      "success": true,
+      "output": "pizzaxyz-15923\\kufiy",
+      "status": "success"
+    },
+    {
+      "id": "0458bbc5-8f2d-4064-a783-c4e791f43b32",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "command": "echo ",
+      "timestamp": "2025-12-04T02:17:39.596167Z",
+      "status": "pending",
+      "output": ""
+    },
+    {
+      "id": "0458bbc5-8f2d-4064-a783-c4e791f43b32",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "timestamp": "2025-12-04T02:17:39.617224Z",
+      "success": true,
+      "output": "ECHO is on.",
+      "status": "success"
+    },
+    {
+      "id": "492ca44d-8111-4821-a380-a9bde9cc70ba",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "command": "cls",
+      "timestamp": "2025-12-04T02:17:44.394375Z",
+      "status": "pending",
+      "output": ""
+    },
+    {
+      "id": "492ca44d-8111-4821-a380-a9bde9cc70ba",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "timestamp": "2025-12-04T02:17:44.416243Z",
+      "success": true,
+      "output": "(no output)",
+      "status": "success"
+    },
+    {
+      "id": "de0b21e5-7b6c-40c3-843c-5e565afacd75",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "command": "echo Hello from CNC!",
+      "timestamp": "2025-12-04T02:17:47.571183Z",
+      "status": "pending",
+      "output": ""
+    },
+    {
+      "id": "de0b21e5-7b6c-40c3-843c-5e565afacd75",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "timestamp": "2025-12-04T02:17:47.592096Z",
+      "success": true,
+      "output": "Hello from CNC!",
+      "status": "success"
+    },
+    {
+      "id": "0ba56670-fbb8-49c4-8f28-0f327a26d114",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "command": "echo ",
+      "timestamp": "2025-12-04T03:34:41.779681Z",
+      "status": "pending",
+      "output": ""
+    },
+    {
+      "id": "0ba56670-fbb8-49c4-8f28-0f327a26d114",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "timestamp": "2025-12-04T03:34:41.808753Z",
+      "success": true,
+      "output": "ECHO is on.",
+      "status": "success"
+    },
+    {
+      "id": "cdb0c980-a29d-4685-bab9-2b200f00c810",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "command": "ipconfig",
+      "timestamp": "2025-12-04T03:38:11.384197Z",
+      "status": "pending",
+      "output": ""
+    },
+    {
+      "id": "cdb0c980-a29d-4685-bab9-2b200f00c810",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "timestamp": "2025-12-04T03:38:11.419595Z",
+      "success": true,
+      "output": "Windows IP Configuration\r\n\r\n\r\nEthernet adapter Ethernet:\r\n\r\n   Connection-specific DNS Suffix  . : lan\r\n   IPv6 Address. . . . . . . . . . . : 2a00:23c7:ceb:dc01::c4e\r\n   IPv6 Address. . . . . . . . . . . : 2a00:23c7:ceb:dc01:2561:8902:7cc:8987\r\n   Temporary IPv6 Address. . . . . . : 2a00:23c7:ceb:dc01:3d1c:3f95:77f1:8860\r\n   Link-local IPv6 Address . . . . . : fe80::9111:7724:cee7:8e7b%10\r\n   IPv4 Address. . . . . . . . . . . : 192.168.1.115\r\n   Subnet Mask . . . . . . . . . . . : 255.255.255.0\r\n   Default Gateway . . . . . . . . . : fe80::d21b:f4ff:fecf:3b50%10\r\n                                       192.168.1.254\r\n\r\nEthernet adapter Ethernet 2:\r\n\r\n   Connection-specific DNS Suffix  . : \r\n   Link-local IPv6 Address . . . . . : fe80::4912:1fe9:5bd:da7%6\r\n   Autoconfiguration IPv4 Address. . : 169.254.65.63\r\n   Subnet Mask . . . . . . . . . . . : 255.255.0.0\r\n   Default Gateway . . . . . . . . . : \r\n\r\nUnknown adapter Local Area Connection:\r\n\r\n   Media State . . . . . . . . . . . : Media disconnected\r\n   Connection-specific DNS Suffix  . : \r\n\r\nEthernet adapter vEthernet (WSL):\r\n\r\n   Connection-specific DNS Suffix  . : \r\n   Link-local IPv6 Address . . . . . : fe80::c5f6:8451:b1ac:3957%36\r\n   IPv4 Address. . . . . . . . . . . : 172.18.144.1\r\n   Subnet Mask . . . . . . . . . . . : 255.255.240.0\r\n   Default Gateway . . . . . . . . . :",
+      "status": "success"
+    },
+    {
+      "id": "5d28c279-6b09-47d1-8d8e-367c7cb47e47",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "command": "powershell $PSVersionTable",
+      "timestamp": "2025-12-04T03:43:12.779145Z",
+      "status": "pending",
+      "output": ""
+    },
+    {
+      "id": "5d28c279-6b09-47d1-8d8e-367c7cb47e47",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "timestamp": "2025-12-04T03:43:13.711697Z",
+      "success": true,
+      "output": "Name                           Value                                                                                   \r\n----                           -----                                                                                   \r\nPSVersion                      5.1.26100.7019                                                                          \r\nPSEdition                      Desktop                                                                                 \r\nPSCompatibleVersions           {1.0, 2.0, 3.0, 4.0...}                                                                 \r\nBuildVersion                   10.0.26100.7019                                                                         \r\nCLRVersion                     4.0.30319.42000                                                                         \r\nWSManStackVersion              3.0                                                                                     \r\nPSRemotingProtocolVersion      2.3                                                                                     \r\nSerializationVersion           1.1.0.1",
+      "status": "success"
+    },
+    {
+      "id": "cc4b96e7-f132-45e8-93a7-5ebc5d86aa04",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "command": "whoami",
+      "timestamp": "2025-12-04T03:43:17.870274Z",
+      "status": "pending",
+      "output": ""
+    },
+    {
+      "id": "cc4b96e7-f132-45e8-93a7-5ebc5d86aa04",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "timestamp": "2025-12-04T03:43:18.098789Z",
+      "success": true,
+      "output": "bailey\\bailey2005",
+      "status": "success"
+    },
+    {
+      "id": "4a11c5bb-3308-4fbb-ac4f-b52ce853289d",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "command": "hostname",
+      "timestamp": "2025-12-04T03:43:20.451540Z",
+      "status": "pending",
+      "output": ""
+    },
+    {
+      "id": "4a11c5bb-3308-4fbb-ac4f-b52ce853289d",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "timestamp": "2025-12-04T03:43:20.708154Z",
+      "success": true,
+      "output": "Bailey",
+      "status": "success"
+    },
+    {
+      "id": "53b92b79-1216-464d-84a7-6384d3b4b26c",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "command": "systeminfo",
+      "timestamp": "2025-12-04T03:43:23.060254Z",
+      "status": "pending",
+      "output": ""
+    },
+    {
+      "id": "53b92b79-1216-464d-84a7-6384d3b4b26c",
+      "client_id": "94a99fbd-5ca6-4db3-adef-2249d829f650",
+      "timestamp": "2025-12-04T03:43:26.524180Z",
+      "success": true,
+      "output": "Host Name:                     BAILEY\r\nOS Name:                       Microsoft Windows 11 Home\r\nOS Version:                    10.0.26100 N/A Build 26100\r\nOS Manufacturer:               Microsoft Corporation\r\nOS Configuration:              Standalone Workstation\r\nOS Build Type:                 Multiprocessor Free\r\nRegistered Owner:              Bailey2005\r\nRegistered Organization:       N/A\r\nProduct ID:                    00342-22520-30463-AAOEM\r\nOriginal Install Date:         04/05/2025, 02:53:29\r\nSystem Boot Time:              04/12/2025, 03:39:47\r\nSystem Manufacturer:           ASUSTeK COMPUTER INC.\r\nSystem Model:                  ASUS TUF Gaming A15 FA506NCR_FA506NCR\r\nSystem Type:                   x64-based PC\r\nProcessor(s):                  1 Processor(s) Installed.\r\n                               [01]: AMD64 Family 25 Model 68 Stepping 1 AuthenticAMD ~3100 Mhz\r\nBIOS Version:                  American Megatrends International, LLC. FA506NCR.304, 08/01/2025\r\nWindows Directory:             C:\\Windows\r\nSystem Directory:              C:\\Windows\\system32\r\nBoot Device:                   \\Device\\HarddiskVolume1\r\nSystem Locale:                 en-gb;English (United Kingdom)\r\nInput Locale:                  en-gb;English (United Kingdom)\r\nTime Zone:                     (UTC+00:00) Dublin, Edinburgh, Lisbon, London\r\nTotal Physical Memory:         16,203 MB\r\nAvailable Physical Memory:     10,124 MB\r\nVirtual Memory: Max Size:      36,683 MB\r\nVirtual Memory: Available:     28,660 MB\r\nVirtual Memory: In Use:        8,023 MB\r\nPage File Location(s):         C:\\pagefile.sys\r\nDomain:                        WORKGROUP\r\nLogon Server:                  \\\\BAILEY\r\nHotfix(s):                     6 Hotfix(s) Installed.\r\n                               [01]: KB5066131\r\n                               [02]: KB5050575\r\n                               [03]: KB5065847\r\n                               [04]: KB5068861\r\n                               [05]: KB5067360\r\n                               [06]: KB5067035\r\nNetwork Card(s):               3 NIC(s) Installed.\r\n                               [01]: Realtek 8852BE Wireless LAN WiFi 6 PCI-E NIC\r\n                                     Connection Name: WiFi\r\n                                     DHCP Enabled:    Yes\r\n                                     DHCP Server:     192.168.1.254\r\n                                     IP address(es)\r\n                                     [01]: 192.168.1.91\r\n                                     [02]: fe80::1383:380:ae51:3b21\r\n                                     [03]: 2a00:23c7:ceb:dc01:e144:3e45:35e0:81dd\r\n                                     [04]: 2a00:23c7:ceb:dc01:2fd6:b027:822a:cca\r\n                                     [05]: 2a00:23c7:ceb:dc01::44c\r\n                               [02]: Realtek PCIe GbE Family Controller\r\n                                     Connection Name: Ethernet\r\n                                     Status:          Media disconnected\r\n                               [03]: Bluetooth Device (Personal Area Network)\r\n                                     Connection Name: Bluetooth Network Connection\r\n                                     Status:          Media disconnected\r\nVirtualization-based security: Status: Not enabled\r\n                               App Control for Business policy: Audit\r\n                               App Control for Business user mode policy: Off\r\n                               Security Features Enabled:\r\nHyper-V Requirements:          VM Monitor Mode Extensions: Yes\r\n                               Virtualization Enabled In Firmware: Yes\r\n                               Second Level Address Translation: Yes\r\n                               Data Execution Prevention Available: Yes",
+      "status": "success"
+    }
+  ]
+}
